@@ -1,9 +1,9 @@
 import React from 'react';
 
 const HelpPage = () => (
-    <div>
+	<div>
         Help Page
-    </div>
+	</div>
 );
 
 export default HelpPage;
