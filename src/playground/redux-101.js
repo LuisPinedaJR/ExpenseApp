@@ -1,12 +1,18 @@
 import { createStore } from 'redux';
 
+// Action generators - functions that return action objects
+
+const incrementCount = ({ incrementBy } = {}) => ({
+	type: 'INCREMENT',
+	incrementBy: typeof incrementBy === 'number' ? incrementBy : 1
+});
 
 const store = createStore((state = { count: 0 }, action) => {
 	switch (action.type) {
 	case 'INCREMENT':
 		const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
 		return {
-			count: state.count + incrementBy
+			count: state.count + action.incrementBy
 		};
 	case 'DECREMENT':
 		const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1;
@@ -31,10 +37,14 @@ const unsubscribe = store.subscribe(() => {
 	console.log(store.getState());
 });
 
-store.dispatch({
-	type: 'INCREMENT',
-	incrementBy: 5
-});
+// store.dispatch({
+// 	type: 'INCREMENT',
+// 	incrementBy: 5
+// });
+
+store.dispatch(incrementCount({ incrementBy: 5 }));
+
+store.dispatch(incrementCount());
 
 store.dispatch({
 	type: 'INCREMENT'
