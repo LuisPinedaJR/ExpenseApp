@@ -44,7 +44,6 @@ const store = createStore((state = { count: 0 }, action) => {
 		return state;
 	} 
    
-	
 });
 
 const unsubscribe = store.subscribe(() => {
@@ -53,17 +52,12 @@ const unsubscribe = store.subscribe(() => {
 
 
 store.dispatch(incrementCount({ incrementBy: 5 }));
-
 store.dispatch(incrementCount());
 
 
-
 store.dispatch(resetCount());
-
 store.dispatch(decrementCount());
 
 
-
 store.dispatch(decrementCount({ decrementBy: 10}));
-
 store.dispatch(setCount({ count: 101 }));
